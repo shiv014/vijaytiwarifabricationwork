@@ -1385,10 +1385,6 @@ input, textarea, select {
         --header-height: 70px;
     }
     
-    .container {
-        padding: 0 16px;
-    }
-    
     .mobile-nav-toggle {
         display: flex;
     }
@@ -1424,129 +1420,36 @@ input, textarea, select {
         display: none;
     }
     
-    /* Hero mobile optimizations */
-    .hero-section {
-        height: auto;
-        min-height: 80vh;
-        padding: 120px 0 60px;
-    }
-    
     .hero-title {
-        font-size: clamp(1.8rem, 6vw, 2.5rem);
-        line-height: 1.2;
+        font-size: 2.2rem;
     }
     
     .hero-subtitle {
-        font-size: 0.95rem;
-        margin-bottom: 24px;
-    }
-    
-    .hero-buttons {
-        flex-direction: column;
-        width: 100%;
-        gap: 12px;
-    }
-    
-    .hero-buttons .btn {
-        width: 100%;
+        font-size: 1.05rem;
     }
     
     .cta-container {
         flex-direction: column;
         text-align: center;
-        gap: 24px;
     }
     
     .cta-button-area {
         justify-content: center;
-        width: 100%;
     }
     
-    .cta-button-area .btn {
-        width: 100%;
-    }
-    
-    /* Services mobile card padding */
-    .services-grid {
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        gap: 16px;
-    }
-    
-    .service-card {
-        padding: 24px 20px;
-    }
-    
-    /* 2-column gallery view on mobile */
-    .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-        margin-bottom: 30px;
-    }
-    
-    .gallery-item {
-        border-radius: 4px;
-    }
-    
-    .gallery-overlay {
-        padding: 10px;
-    }
-    
-    .gallery-overlay h4 {
-        font-size: 0.85rem;
-        margin-bottom: 2px;
-    }
-    
-    .gallery-overlay span {
-        font-size: 0.65rem;
-    }
-    
-    /* Stats mobile layout grid */
     .stats-container {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-        padding: 24px 16px;
+        justify-content: center;
+        text-align: center;
     }
     
     .stat-item {
         align-items: center;
-        text-align: center;
-        min-width: unset;
-    }
-    
-    .stat-number, .stat-plus, .stat-number-text {
-        font-size: 1.8rem;
     }
     
     .stat-divider {
         display: none;
     }
     
-    /* About image mobile layouts */
-    .about-image-card {
-        padding-right: 0;
-        padding-bottom: 0;
-        margin-bottom: 10px;
-    }
-    
-    .about-image-card::after {
-        display: none;
-    }
-    
-    .about-experience-badge {
-        position: relative;
-        bottom: 0;
-        left: 0;
-        margin-top: 15px;
-        align-self: flex-start;
-        width: 100%;
-        flex-direction: row;
-        justify-content: center;
-        gap: 15px;
-        padding: 12px;
-    }
-    
-    /* Contact form mobile grid */
     .form-row {
         flex-direction: column;
         gap: 0;
@@ -1556,16 +1459,6 @@ input, textarea, select {
         padding: 24px;
     }
     
-    .contact-action-buttons {
-        flex-direction: column;
-        gap: 12px;
-    }
-    
-    .contact-action-buttons .btn {
-        width: 100%;
-    }
-    
-    /* Lightbox mobile bounds */
     .lightbox-prev {
         left: 10px;
     }
