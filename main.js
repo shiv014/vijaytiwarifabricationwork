@@ -279,32 +279,58 @@ document.addEventListener('DOMContentLoaded', () => {
             const originalText = btnText.textContent;
             btnText.textContent = 'Sending...';
 
-            // Extract form details
             const nameVal = document.getElementById('formName').value;
-            const phoneVal = document.getElementById('formPhone').value;
-            const serviceVal = document.getElementById('formService').value;
-            const messageVal = document.getElementById('formMessage').value;
 
-            // Log details (since there is no real server, mock it)
-            console.log('--- Form Submission Received ---');
-            console.log(`Name: ${nameVal}`);
-            console.log(`Phone: ${phoneVal}`);
-            console.log(`Service: ${serviceVal}`);
-            console.log(`Message: ${messageVal}`);
+            // Check if Access Key is configured
+            const accessKeyInput = document.getElementById('web3FormsAccessKey');
+            if (accessKeyInput && accessKeyInput.value === 'YOUR_ACCESS_KEY_HERE') {
+                console.warn('Web3Forms Access Key is not configured. Register at web3forms.com');
+                
+                // Simulate delay and warn the user
+                setTimeout(() => {
+                    btnSubmitForm.disabled = false;
+                    formSpinner.style.display = 'none';
+                    btnText.textContent = originalText;
+                    showToast(`Demo: Submitted successfully! Add your Web3Forms Access Key to receive emails.`);
+                    contactForm.reset();
+                }, 1500);
+                return;
+            }
 
-            // Simulate server network delay
-            setTimeout(() => {
-                // Hide spinner
+            // Prepare Form Data for Web3Forms API
+            const formData = new FormData(contactForm);
+            const object = Object.fromEntries(formData);
+            const json = JSON.stringify(object);
+
+            // Send actual email via Web3Forms API
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: json
+            })
+            .then(async (response) => {
+                let jsonRes = await response.json();
+                if (response.status == 200) {
+                    showToast(`Inquiry sent! Thank you ${nameVal}, we will contact you shortly.`);
+                    contactForm.reset();
+                } else {
+                    console.error('Web3Forms Error:', jsonRes);
+                    showToast(`Error: ${jsonRes.message || 'Could not send message. Please try again.'}`);
+                }
+            })
+            .catch(error => {
+                console.error('Network Error:', error);
+                showToast("Connection error. Please check your internet or call us directly.");
+            })
+            .then(() => {
+                // Reset loading state
                 btnSubmitForm.disabled = false;
                 formSpinner.style.display = 'none';
                 btnText.textContent = originalText;
-                
-                // Show Success Toast
-                showToast(`Inquiry sent! Thank you ${nameVal}, Vijay Tiwari will contact you shortly.`);
-                
-                // Reset form fields
-                contactForm.reset();
-            }, 1800);
+            });
         });
     }
 

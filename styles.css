@@ -1090,6 +1090,11 @@ input, textarea, select {
     color: var(--accent-color);
 }
 
+#emailLink {
+    word-break: break-all;
+    overflow-wrap: break-word;
+}
+
 .contact-action-buttons {
     display: flex;
     gap: 16px;
@@ -1457,6 +1462,10 @@ input, textarea, select {
     
     .contact-form-panel {
         padding: 24px;
+    }
+    
+    .detail-content a, .detail-content p {
+        font-size: 0.95rem;
     }
     
     .lightbox-prev {
